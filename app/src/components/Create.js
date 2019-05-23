@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Create.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
 
 export default class Create extends Component {
   constructor(props) {
@@ -15,7 +16,6 @@ export default class Create extends Component {
     this.createCity = this.createCity.bind(this);
     this.createZip = this.createZip.bind(this);
     this.createCountry = this.createCountry.bind(this);
-
 
     this.state = {
       name: "",
@@ -75,26 +75,39 @@ export default class Create extends Component {
       zip: e.target.value
     });
   }
-  createUser(e) {
-      
-    console.log(this.state);
-   
+  createUser() {
+      const {
+        name,email,birthDay,street,state,city,country,zip
+      } = this.state
+    axios
+      .post("http://localhost:5000/createUsers", {
+        // user: this.state.user
+        name,email,birthDay,street,state,city,country,zip
+      })
+      .then(response => {
+        this.setState({
+          ...this.state
+        
+        });
+      })
+      .catch(err => this.setState({ error: "Authentication error" }));
   }
+
+
 
   render() {
     return (
       <div className="container">
-        <h6>Rellene el formulario</h6>
+        <h6>Crear usuario</h6>
         <div className="container-form">
           <form>
             <div className="formLeft">
-             
               <div className="form-group">
                 <label>Nombre</label>
                 <input
                   type="text"
                   className="form-control"
-                  value={this.state.nombre}
+                  value={this.state.name}
                   onChange={this.createName}
                 />
               </div>
@@ -108,14 +121,13 @@ export default class Create extends Component {
                 />
               </div>
               <div className="form-group calendar">
-              <label>Fecha</label>
-              
-              <DatePicker
+                <label>Fecha</label>
 
-                dateFormat="yyyy/MM/dd"
-                selected={this.state.birthDay}
-                onChange={this.handleChange}
-              />
+                <DatePicker
+                  dateFormat="yyyy/MM/dd"
+                  selected={this.state.birthDay}
+                  onChange={this.handleChange}
+                />
               </div>
               <div className="form-group">
                 <label>País</label>
@@ -165,15 +177,14 @@ export default class Create extends Component {
                 />
               </div>
             </div>
-
           </form>
-            <button
-              type="button"
-              className="btn btn-info buttonForm"
-              onClick={() => this.createUser()}
-            >
-              Enviar
-            </button>
+          <button
+            type="button"
+            className="btn btn-info buttonForm"
+            onClick={() => this.createUser()}
+          >
+            Enviar
+          </button>
         </div>
       </div>
     );

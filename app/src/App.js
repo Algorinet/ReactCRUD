@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router,Switch, Route, Link } from "react-router-dom";
 import logo from "./logo.png";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
@@ -10,8 +10,12 @@ import Create from "./components/Create.js";
 
 function App() {
   return (
-    <Router>
+    <React.Fragment>
+     
+
+     
       <div className="App">
+          <Router>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <nav className="navbar navbar-expand-lg">
@@ -23,12 +27,18 @@ function App() {
             </Link>
           </nav>
         </header>
-          <Route path="/" exact component={Home} />
-          <Route path="/edit/:id" component={Edit} />
-          <Route path="/create" component={Create} />
+        <Switch>
+
+          <Route exact path="/" component={Home} />
+          <Route exact path="/edit/:id" component={Edit} />
+          <Route exact path="/create" component={Create} />
+        </Switch>
+          </Router>
         
       </div>
-    </Router>
+
+    </React.Fragment>
+    
   );
 }
 

@@ -3,6 +3,8 @@ import axios from "axios";
 import "./home.css";
 import MaterialIcon from "material-icons-react";
 import moment from "moment";
+import { Link } from "react-router-dom";
+
 
 export default class Home extends Component {
   state = {
@@ -28,9 +30,8 @@ export default class Home extends Component {
           this.getUsers();
       })
   }
-  updateUser(id) {
-      console.log("editando ")
-  }
+  
+ 
 
   render() {
     return (
@@ -62,7 +63,7 @@ export default class Home extends Component {
                   <td>{user.street}</td>
                 
                   <td>
-                      <button type="button" className="btn btn-outline-primary" onClick={() => this.updateUser(user._id)}><MaterialIcon icon="dashboard" color='#034244' /></button>
+                  <Link to={`/edit/${user._id}`}><button type="button" className="btn btn-outline-primary"><MaterialIcon icon="dashboard" color='#034244' /></button></Link>
                   </td>
                   <td>
                       <button type="button" className="btn btn-outline-danger" onClick={() => this.deleteUser(user._id)}><MaterialIcon icon="delete" color='#034244' /></button>
