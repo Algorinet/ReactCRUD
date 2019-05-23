@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import Home from "./components/Home.js";
 import Edit from "./components/Edit.js";
 import Create from "./components/Create.js";
+import Info from "./components/Info.js";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/edit/:id" component={Edit} />
           <Route exact path="/create" component={Create} />
+          <Route exact path="/info/:id" component={Info} />
         </Switch>
           </Router>
         

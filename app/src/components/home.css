@@ -9,11 +9,26 @@
     border-radius: 10px;
     margin-top: 20px;
 }
+.tableDetalles {
+    display: flex;
+    flex-direction: column;
+    width: 20%
+}
 .table {
     padding: 10px;
     background-color: whitesmoke
 }
+.tableHead {
+    background: #034244;
+    color: whitesmoke
+}
 
 h4,h5 {
     color: #034244;
+}
+.button {
+    color: whitesmoke;
+    font-size: 20px;
+    margin-bottom: 5px;
+    border: 1px solid whitesmoke;
 }

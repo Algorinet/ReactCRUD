@@ -10,7 +10,16 @@ export default class Edit extends Component {
     super(props);
 
     this.state = {
-      user: []
+      user: {
+          name: '',
+        email: '',
+        birthDay: '',
+        street: '',
+        state: '',
+        city: '',
+        country: '',
+        zip: ''
+      }
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -22,14 +31,16 @@ export default class Edit extends Component {
     }); */
   }
   handleChangeDate(date) {
+      const newDate = moment(date).format('L')
+      console.log(newDate)
     // this.setState({...this.state, user:{...this.state.user,[e.target.name]: moment(e.target.value).format('L')}  });
-    this.setState({...this.state, user:{...this.state.user, birthDay: moment(date).format('L')}
-    }); 
+    this.setState({
+       ...this.state, user:{...this.state.user, birthDay: newDate}
+      });
   }
 
   updateUser=(id) =>{
-    
-    axios
+      axios
       .put(`http://localhost:5000/updateUsersById/${id}`,
       this.state.user
       )
@@ -37,6 +48,7 @@ export default class Edit extends Component {
         this.setState({
           ...this.state
         });
+        this.props.history.push('/')
       })
       .catch(err => this.setState({ error: "Authentication error" }));
   }
@@ -67,7 +79,6 @@ export default class Edit extends Component {
                   className="form-control"
                   name="name"
                   placeholder={this.state.user.name}
-                  key={this.state.user.name ? 'notLoadedYet' : 'loaded'}
                   value={this.state.user.name}
                   onChange={this.handleChange}
                 />

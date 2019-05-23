@@ -37,12 +37,13 @@ export default class Home extends Component {
     return (
       <div className="container-table">
         <table className="table">
-          <thead>
+          <thead className="tableHead">
             <tr>
               <th>Nombre</th>
               <th>Email</th>
               <th>Fecha</th>
               <th>Dirección</th>
+              <th>Detalles</th>
               <th>Edit</th>
               <th>Delete</th>
             </tr>
@@ -61,6 +62,9 @@ export default class Home extends Component {
                     <h5>{moment(user.birthDay).format('L')}</h5>
                   </td>
                   <td>{user.street}</td>
+                  <td>
+                  <Link to={`/info/${user._id}`}><button type="button" className="btn btn-outline-info"><MaterialIcon icon="description" color='#034244' /></button></Link>
+                  </td>
                 
                   <td>
                   <Link to={`/edit/${user._id}`}><button type="button" className="btn btn-outline-primary"><MaterialIcon icon="dashboard" color='#034244' /></button></Link>

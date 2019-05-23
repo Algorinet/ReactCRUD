@@ -83,12 +83,14 @@ export default class Create extends Component {
       .post("http://localhost:5000/createUsers", {
         // user: this.state.user
         name,email,birthDay,street,state,city,country,zip
+        
       })
       .then(response => {
         this.setState({
           ...this.state
-        
+          
         });
+        this.props.history.push('/')
       })
       .catch(err => this.setState({ error: "Authentication error" }));
   }
