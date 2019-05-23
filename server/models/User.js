@@ -3,10 +3,14 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
-    name: String,
-    email: String,
-    birthDay: String,
-    address: String
+    name: { type: String, required: true },
+    email: { type: String, required: true },
+    birthDay: Date,
+    street: String,
+    state: String,
+    city: String,
+    country: String,
+    zip: String
   },
   {
     timestamps: {

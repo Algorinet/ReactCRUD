@@ -21,9 +21,9 @@ router.get('/getusersById/:_id', async (req,res) => {
   res.json(user);
 })
 router.post('/createUsers', async (req,res) => {
-  const {name,email, birthDay, address} = req.body;
+  const {name,email,birthDay,street,state,city,country,zip} = req.body;
   const user = new User({
-    name,email,birthDay,address
+    name,email,birthDay,street,state,city,country,zip
   });
   await user.save();
   console.log(user);
@@ -31,8 +31,8 @@ router.post('/createUsers', async (req,res) => {
 })
 
 router.put('/updateUsersById/:_id', async (req,res) => {
-  const {name,email,birthDay,address} = req.body;
-  const newUser = {name,email,birthDay,address};
+  const {name,email,birthDay,street,state,city,country,zip} = req.body;
+  const newUser = {name,email,birthDay,street,state,city,country,zip};
   await User.findByIdAndUpdate(req.params._id, newUser);
   res.json({status: 'Updated OK'})
 })
