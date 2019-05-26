@@ -5,7 +5,7 @@ const userSchema = new Schema(
   {
     name: { type: String, required: true },
     email: { type: String, required: true },
-    birthDay: Date,
+    birthDay: String,
     street: String,
     state: String,
     city: String,
