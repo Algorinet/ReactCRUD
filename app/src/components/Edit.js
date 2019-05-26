@@ -11,6 +11,7 @@ export default class Edit extends Component {
 
     this.state = {
       user: {
+        startDate: new Date(),
           name: '',
         email: '',
         birthDay: '',
@@ -25,23 +26,17 @@ export default class Edit extends Component {
   }
   handleChange(e) {
     this.setState({...this.state, user:{...this.state.user,[e.target.name]: e.target.value}  });
-    /*  this.setState({
-      birthDay: date
-      [e.target.name]: e.target.value
-    }); */
+     
   }
-  handleChangeDate(date) {
-      const newDate = moment(date).format('L')
-      console.log(newDate)
-    // this.setState({...this.state, user:{...this.state.user,[e.target.name]: moment(e.target.value).format('L')}  });
+  handleChangeDate(e) {
     this.setState({
-       ...this.state, user:{...this.state.user, birthDay: newDate}
-      });
+      ...this.state, user: {birthDay: e}
+    });
   }
 
   updateUser=(id) =>{
       axios
-      .put(`http://localhost:5000/updateUsersById/${id}`,
+      .put(`http://localhost:5005/updateUsersById/${id}`,
       this.state.user
       )
       .then(response => {
@@ -54,7 +49,7 @@ export default class Edit extends Component {
   }
   componentDidMount() {
     const idUser = this.props.match.params.id;
-    axios.get(`http://localhost:5000/getUsersById/${idUser}`).then(response => {
+    axios.get(`http://localhost:5005/getUsersById/${idUser}`).then(response => {
       // const allUsers = response.data;
       const userData = response.data;
       this.setState({
@@ -68,7 +63,7 @@ export default class Edit extends Component {
     console.log(this.state);
     return (
       <div className="container">
-        <h6>Editar Usuario</h6>
+        <h6 className="titulo">Editar Usuario</h6>
         <div className="container-form">
           <form>
             <div className="formLeft">
@@ -96,14 +91,23 @@ export default class Edit extends Component {
               </div>
               <div className="form-group calendar">
                 <label>Fecha</label>
+                <input
+                  type="date"
+                  className="form-control"
+                  name="birthDay"
+                  placeholder={this.state.user.birthDay}
+                  value={this.state.user.birthDay}
+                  onChange={this.handleChange}
+                />
 
-                <DatePicker
+               {/*  <DatePicker
                   dateFormat="yyyy/MM/dd"
                   placeholder={this.state.user.birthDay}
-                  name="birthDay"
-                  value={this.state.user.birthDay}
+                  value={moment(this.state.user.birthDay).format("L")}
+                  selected={this.state.birthDay}
+                  onSelect={this.handleSelect}
                   onChange={this.handleChangeDate}
-                />
+                /> */}
               </div>
               <div className="form-group">
                 <label>País</label>

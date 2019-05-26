@@ -80,7 +80,7 @@ export default class Create extends Component {
         name,email,birthDay,street,state,city,country,zip
       } = this.state
     axios
-      .post("http://localhost:5000/createUsers", {
+      .post("http://localhost:5005/createUsers", {
         // user: this.state.user
         name,email,birthDay,street,state,city,country,zip
         
@@ -100,7 +100,7 @@ export default class Create extends Component {
   render() {
     return (
       <div className="container">
-        <h6>Crear usuario</h6>
+        <h6 className="titulo">Crear usuario</h6>
         <div className="container-form">
           <form>
             <div className="formLeft">

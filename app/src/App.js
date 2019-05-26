@@ -20,11 +20,11 @@ function App() {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <nav className="navbar navbar-expand-lg">
-            <Link to="/" className="navbar-brand">
+            <Link to="/" className="navbar-brand links">
               Usuarios
             </Link>
-            <Link to="/create" className="navbar-brand">
-              Nuevo Usuario
+            <Link to="/create" className="navbar-brand links">
+              Crear Usuario
             </Link>
           </nav>
         </header>

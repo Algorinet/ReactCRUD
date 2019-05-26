@@ -26,7 +26,7 @@ export default class Home extends Component {
 
   getUserInfo() {
     const idUser = this.props.match.params.id;
-    axios.get(`http://localhost:5000/getUsersById/${idUser}`).then(response => {
+    axios.get(`http://localhost:5005/getUsersById/${idUser}`).then(response => {
       // const allUsers = response.data;
       const userData = response.data;
       this.setState({
@@ -40,6 +40,7 @@ export default class Home extends Component {
   render() {
     return (
       <div className="container">
+       <h6 className="titulo">Detalles</h6>
         <table className="table">
           <thead className="tableHead">
             <tr>

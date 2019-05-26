@@ -15,7 +15,7 @@ export default class Home extends Component {
   }
 
   getUsers() {
-    axios.get("http://localhost:5000/getusers").then(response => {
+    axios.get("http://localhost:5005/getusers").then(response => {
         const allUsers = response.data;
   
         this.setState({
@@ -26,7 +26,7 @@ export default class Home extends Component {
   }
   deleteUser(id) {
       console.log("eliminando", id)
-      axios.delete(`http://localhost:5000/deleteUsersById/${id}`).then(data => {
+      axios.delete(`http://localhost:5005/deleteUsersById/${id}`).then(data => {
           this.getUsers();
       })
   }
@@ -44,8 +44,8 @@ export default class Home extends Component {
               <th>Fecha</th>
               <th>Dirección</th>
               <th>Detalles</th>
-              <th>Edit</th>
-              <th>Delete</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
             </tr>
           </thead>
           <tbody>

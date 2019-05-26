@@ -21,10 +21,16 @@
 }
 
 .App-link {
-  color: #8c9192;
+  color: whitesmoke;
 }
 .navbar-brand {
   color: #8c9192
+}
+.links {
+  border: 5px double whitesmoke;
+  padding: 5px;
+  border-radius: 10px;
+  color: whitesmoke
 }
 
 
