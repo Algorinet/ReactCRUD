@@ -30,6 +30,7 @@
   color: #8c9192
 }
 .links {
+  width: 200px;
   border: 5px double whitesmoke;
   padding: 5px;
   border-radius: 10px;

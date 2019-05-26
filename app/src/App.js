@@ -24,7 +24,7 @@ function App() {
               Usuarios
             </Link>
             <Link to="/create" className="navbar-brand links">
-              Crear Usuario
+              Nuevo
             </Link>
           </nav>
         </header>
